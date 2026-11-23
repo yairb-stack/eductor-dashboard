@@ -1974,16 +1974,16 @@ const Exposure=(()=>{
  function* simulation(g,p,f,options={}){
   const field=options.field||makeField(g,p,f),Gref=p.reference==='slide'?3829961.607121514:field.peak;
   if(!(Gref>0&&Number.isFinite(Gref)))return {ok:false,reason:'No positive turbulence reference: increase the turbulence intensity or provide an energetically feasible flow.'};
-  const rows=[],offsets=[-1,0,1].map(v=>v*p.offset*g.db/2000),sizes=[p.small*1e-6,p.large*1e-6];
-  for(let species=0;species<2;species++)for(let o=0;o<3;o++){
-   if(options.groups&&!options.groups.includes(species*3+o))continue;
+  const rows=[],offsets=[0],sizes=[p.small*1e-6,p.large*1e-6];
+  for(let species=0;species<2;species++)for(let o=0;o<offsets.length;o++){
+   if(options.groups&&!options.groups.includes(species*offsets.length+o))continue;
    const d=sizes[species],offset=offsets[o],adaptive=p.noise&&p.sampling==='precision',limit=p.noise?(adaptive?(p.maxHistories??4096):p.n):(field.geo.branches?.length||1),runs=[],mean=new Float64Array(241),sq=new Float64Array(241);let first;
    const fractions=field.branchFractions||[1],counts=fractions.map(()=>0),paired=p.noise&&p.antithetic===true;
    const seedFor=j=>(p.seed+species*103309+o*1009+(paired?Math.floor(j/2):j)*7919)>>>0;
    for(let j=0;j<limit;j++){
     const position=(((paired?Math.floor(j/2):j)+.5)*.618033988749895)%1;let c=0;const branch=!p.noise?j:(j<(paired?2:1)*fractions.length?Math.floor(j/(paired?2:1)):fractions.findIndex((v,i)=>(c+=v)>=position||i===fractions.length-1));
     const r=track(field,{...p,antitheticSign:paired&&j%2?-1:1},d,offset,Gref,seedFor(j),p.noise,counts[branch]===0,branch);counts[branch]++;runs.push(r);if(j===0)first=r;
-    if((j+1)%(p.populationBalance||p.wallModel==='cad'?1:16)===0)yield {completed:(species*3+o)*limit+j+1,total:6*limit};
+    if((j+1)%(p.populationBalance||p.wallModel==='cad'?1:16)===0)yield {completed:(species*offsets.length+o)*limit+j+1,total:2*offsets.length*limit};
     if(adaptive&&(j+1)%128===0&&counts.every((n,i)=>n>0||fractions[i]===0)){
      runs.forEach(r=>r.weight=fractions[r.branchIndex]/counts[r.branchIndex]);
      const check=numerics.precision(runs,p.targetHalfWidth??.02);if(paired){check.halfWidth=(numerics.wilson(runs.reduce((s,r)=>s+(r.contact?r.weight:0),0),check.effectiveN/2)[1]-numerics.wilson(runs.reduce((s,r)=>s+(r.contact?r.weight:0),0),check.effectiveN/2)[0])/2;}

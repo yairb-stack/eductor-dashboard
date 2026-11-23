@@ -23,7 +23,7 @@ const ExposureChecks=(()=>{
    const q={...p,...option.changes},key=[q.p0,q.ps,q.po].join('/');if(seen.has(key)||key===[p.p0,p.ps,p.po].join('/'))continue;seen.add(key);
    const flow=engine.flow(g,q,legacy);if(!flow.ok)continue;
    const field=engine.makeField(g,q,flow);if(!(field.peak>0&&Number.isFinite(field.peak)))continue;
-   const releaseOK=[q.small,q.large].every(d=>[-1,0,1].every(o=>field.geo.clearance(...field.geo.release(o*q.offset*g.db/2000),d*1e-6)>0));
+   const releaseOK=[q.small,q.large].every(d=>field.geo.clearance(...field.geo.release(0),d*1e-6)>0);
    if(!releaseOK)continue;
    result.alternatives.push({...option,air:flow.ms*1000,chamber:flow.portP/1e5});
   }
