@@ -1,0 +1,1279 @@
+{
+  "date": "2026-11-23",
+  "geometries": [
+    {
+      "id": "20deg_axis",
+      "name": "Eight 20 degree feeds \u2014 axis aim",
+      "kind": "angled",
+      "angle": 20,
+      "aim": 0,
+      "L": 40,
+      "bore": 22,
+      "length": 50,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -37.58770483143634,
+            0.0,
+            13.680805733026748
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.0,
+            -0.3420201433256687
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 2,
+          "pointMM": [
+            -37.58770483143634,
+            9.673790505919008,
+            9.67379050591901
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.24184476264797522,
+            -0.24184476264797528
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 3,
+          "pointMM": [
+            -37.58770483143634,
+            13.680805733026748,
+            8.377077475353983e-16
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.3420201433256687,
+            -2.094269368838496e-17
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 4,
+          "pointMM": [
+            -37.58770483143634,
+            9.67379050591901,
+            -9.673790505919008
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.24184476264797528,
+            0.24184476264797522
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 5,
+          "pointMM": [
+            -37.58770483143634,
+            1.6754154950707967e-15,
+            -13.680805733026748
+          ],
+          "direction": [
+            0.9396926207859084,
+            -4.188538737676992e-17,
+            0.3420201433256687
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 6,
+          "pointMM": [
+            -37.58770483143634,
+            -9.673790505919008,
+            -9.673790505919012
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.24184476264797522,
+            0.2418447626479753
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 7,
+          "pointMM": [
+            -37.58770483143634,
+            -13.680805733026748,
+            -2.5131232426061948e-15
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.3420201433256687,
+            6.282808106515487e-17
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 8,
+          "pointMM": [
+            -37.58770483143634,
+            -9.673790505919012,
+            9.673790505919007
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.2418447626479753,
+            -0.2418447626479752
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 0
+        }
+      ],
+      "additions": [
+        "2 mm housing walls; simple outlet and rear mounting collars",
+        "Entry plenum x=-14 to 0 mm; solid rear block keeps the inclined passages separate longer; excludes the added nozzle solid",
+        "Motive insert: 8 mm supply bore, 8 mm convergence, 24 mm long 3.5 mm throat",
+        "Added plenum/nozzle walls alter the reduced flow domain: published performance is not validated for this CAD realization"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618831,
+        "portProbeChecks": 8,
+        "assemblyRoundtripVolumeError": 1.2653715260407244e-08,
+        "records": {
+          "housing": {
+            "file": "parts/20deg_axis/housing.step",
+            "sha256": "d24cd5cf2f4dbc47a33911dac0114893d54b6027ebed3f336c2ccb281ce39436",
+            "volumeMM3": 18977.726736840912,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 1.3917776188383103e-08,
+            "bboxMM": [
+              -39.51274028333519,
+              -18.969797168774527,
+              -18.969797168774527,
+              50.0,
+              18.969797168781525,
+              18.969797168781525
+            ]
+          },
+          "nozzle": {
+            "file": "parts/20deg_axis/nozzle.step",
+            "sha256": "98cc3267a14c829faa6a322a1f10ec28cf48e5899e078f717d48e3a404160986",
+            "volumeMM3": 1896.3438655230907,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.541902872698012e-14,
+            "bboxMM": [
+              -50.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/20deg_axis_fluid.step",
+            "sha256": "fdc76e3723668cc8a3eaa1722e6564f59e2f9afcb2e9776d21c480cf08e7cb3e",
+            "volumeMM3": 30391.43438401513,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 4.698265583475486e-12,
+            "bboxMM": [
+              -50.0,
+              -16.33865793057425,
+              -16.33865793057425,
+              50.0,
+              16.338657930581252,
+              16.338657930581252
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/20deg_axis.step",
+        "sha256": "214a0630aa4405c6c7072226c4cdbdd4897255f5d04554adf030aff41481b40f",
+        "bytes": 976365,
+        "bboxMM": [
+          -50.0,
+          -18.969797168774527,
+          -18.969797168774527,
+          50.0,
+          18.969797168781525,
+          18.969797168781525
+        ]
+      }
+    },
+    {
+      "id": "20deg_offset",
+      "name": "Eight 20 degree feeds \u2014 4 mm offset",
+      "kind": "angled",
+      "angle": 20,
+      "aim": 4,
+      "L": 40,
+      "bore": 22,
+      "length": 50,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -37.58770483143634,
+            0.0,
+            17.680805733026748
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.0,
+            -0.3420201433256687
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 2,
+          "pointMM": [
+            -37.58770483143634,
+            12.502217630665198,
+            12.5022176306652
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.24184476264797522,
+            -0.24184476264797528
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 3,
+          "pointMM": [
+            -37.58770483143634,
+            17.680805733026748,
+            1.082637107364869e-15
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.3420201433256687,
+            -2.094269368838496e-17
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 4,
+          "pointMM": [
+            -37.58770483143634,
+            12.5022176306652,
+            -12.502217630665198
+          ],
+          "direction": [
+            0.9396926207859084,
+            -0.24184476264797528,
+            0.24184476264797522
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 5,
+          "pointMM": [
+            -37.58770483143634,
+            2.165274214729738e-15,
+            -17.680805733026748
+          ],
+          "direction": [
+            0.9396926207859084,
+            -4.188538737676992e-17,
+            0.3420201433256687
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 6,
+          "pointMM": [
+            -37.58770483143634,
+            -12.502217630665198,
+            -12.502217630665202
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.24184476264797522,
+            0.2418447626479753
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 7,
+          "pointMM": [
+            -37.58770483143634,
+            -17.680805733026748,
+            -3.2479113220946065e-15
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.3420201433256687,
+            6.282808106515487e-17
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        },
+        {
+          "id": 8,
+          "pointMM": [
+            -37.58770483143634,
+            -12.502217630665202,
+            12.502217630665196
+          ],
+          "direction": [
+            0.9396926207859084,
+            0.2418447626479753,
+            -0.2418447626479752
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 20,
+          "aimRadiusMM": 4
+        }
+      ],
+      "additions": [
+        "2 mm housing walls; simple outlet and rear mounting collars",
+        "Entry plenum x=-14 to 0 mm; solid rear block keeps the inclined passages separate longer; excludes the added nozzle solid",
+        "Motive insert: 8 mm supply bore, 8 mm convergence, 24 mm long 3.5 mm throat",
+        "Added plenum/nozzle walls alter the reduced flow domain: published performance is not validated for this CAD realization"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618831,
+        "portProbeChecks": 8,
+        "assemblyRoundtripVolumeError": 4.297698941717742e-10,
+        "records": {
+          "housing": {
+            "file": "parts/20deg_offset/housing.step",
+            "sha256": "1fcf96519ba168dff9acfc79c2622037495dbc51633603ea734f9c574aeac8c8",
+            "volumeMM3": 23092.996878563437,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 4.5638468441298364e-10,
+            "bboxMM": [
+              -39.51274028334,
+              -22.969797168774527,
+              -22.969797168774527,
+              50.0000001,
+              22.969797168782,
+              22.969797168782
+            ]
+          },
+          "nozzle": {
+            "file": "parts/20deg_offset/nozzle.step",
+            "sha256": "52143cba82cc99e173da6a79b82154f3fce629d4ff6a256ba0f41316f6100037",
+            "volumeMM3": 1896.3438655230907,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.541902872698012e-14,
+            "bboxMM": [
+              -50.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/20deg_offset_fluid.step",
+            "sha256": "cfa24620b7a726a42535429958811fc5a4d958d2d6202ba3a5ba8ad1d799b871",
+            "volumeMM3": 30544.093340101354,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.944113252142088e-10,
+            "bboxMM": [
+              -50.0,
+              -20.338657930574254,
+              -20.338657930574254,
+              50.0000001,
+              20.338657930581252,
+              20.338657930581252
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/20deg_offset.step",
+        "sha256": "6cd1d45a35f5379758f6061b3d46a093d8ccb60623e0908e11fa83512716a636",
+        "bytes": 638098,
+        "bboxMM": [
+          -50.0,
+          -22.969797168774527,
+          -22.969797168774527,
+          50.0000001,
+          22.969797168782,
+          22.969797168782
+        ]
+      }
+    },
+    {
+      "id": "45deg_axis",
+      "name": "Eight 45 degree feeds \u2014 comparison",
+      "kind": "angled",
+      "angle": 45,
+      "aim": 0,
+      "L": 40,
+      "bore": 22,
+      "length": 50,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -28.284271247461902,
+            0.0,
+            28.2842712474619
+          ],
+          "direction": [
+            0.7071067811865476,
+            -0.0,
+            -0.7071067811865475
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 2,
+          "pointMM": [
+            -28.284271247461902,
+            19.999999999999996,
+            20.0
+          ],
+          "direction": [
+            0.7071067811865476,
+            -0.4999999999999999,
+            -0.5
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 3,
+          "pointMM": [
+            -28.284271247461902,
+            28.2842712474619,
+            1.7319121124709865e-15
+          ],
+          "direction": [
+            0.7071067811865476,
+            -0.7071067811865475,
+            -4.329780281177466e-17
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 4,
+          "pointMM": [
+            -28.284271247461902,
+            20.0,
+            -19.999999999999996
+          ],
+          "direction": [
+            0.7071067811865476,
+            -0.5,
+            0.4999999999999999
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 5,
+          "pointMM": [
+            -28.284271247461902,
+            3.463824224941973e-15,
+            -28.2842712474619
+          ],
+          "direction": [
+            0.7071067811865476,
+            -8.659560562354932e-17,
+            0.7071067811865475
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 6,
+          "pointMM": [
+            -28.284271247461902,
+            -19.999999999999996,
+            -20.000000000000004
+          ],
+          "direction": [
+            0.7071067811865476,
+            0.4999999999999999,
+            0.5000000000000001
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 7,
+          "pointMM": [
+            -28.284271247461902,
+            -28.2842712474619,
+            -5.195736337412959e-15
+          ],
+          "direction": [
+            0.7071067811865476,
+            0.7071067811865475,
+            1.2989340843532398e-16
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        },
+        {
+          "id": 8,
+          "pointMM": [
+            -28.284271247461902,
+            -20.000000000000004,
+            19.999999999999993
+          ],
+          "direction": [
+            0.7071067811865476,
+            0.5000000000000001,
+            -0.49999999999999983
+          ],
+          "diameterMM": 5.65685424949238,
+          "lengthMM": 40,
+          "axisAngleDeg": 45,
+          "aimRadiusMM": 0
+        }
+      ],
+      "additions": [
+        "2 mm housing walls; simple outlet and rear mounting collars",
+        "Entry plenum x=-14 to 0 mm; solid rear block keeps the inclined passages separate longer; excludes the added nozzle solid",
+        "Motive insert: 8 mm supply bore, 8 mm convergence, 24 mm long 3.5 mm throat",
+        "Added plenum/nozzle walls alter the reduced flow domain: published performance is not validated for this CAD realization"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618831,
+        "portProbeChecks": 8,
+        "assemblyRoundtripVolumeError": 3.649762326444908e-10,
+        "records": {
+          "housing": {
+            "file": "parts/45deg_axis/housing.step",
+            "sha256": "f1239b861f01e8faab78a2cc5442e469bee14c77aa3a53ae93f15a7ce1bac744",
+            "volumeMM3": 27522.238498049104,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 3.2576203960320845e-10,
+            "bboxMM": [
+              -32.2641702347822,
+              -32.2641702347822,
+              -32.2641702347822,
+              50.0000001,
+              32.2641702347842,
+              32.2641702347842
+            ]
+          },
+          "nozzle": {
+            "file": "parts/45deg_axis/nozzle.step",
+            "sha256": "b42ba10cdbbdd6512e756434191c5784c9103d7d8816e695463f2b5e44ed64c8",
+            "volumeMM3": 1896.3438655230907,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.541902872698012e-14,
+            "bboxMM": [
+              -50.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/45deg_axis_fluid.step",
+            "sha256": "faff7a23a71d7cafd8412d911b26f000932f4ab99a4de89406ba000ceda6bdfd",
+            "volumeMM3": 30408.30750155101,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.5877614264861364e-10,
+            "bboxMM": [
+              -50.0,
+              -30.284271347459867,
+              -30.284271347459867,
+              50.0000001,
+              30.284271347462003,
+              30.284271347462003
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/45deg_axis.step",
+        "sha256": "0d8dbeb089f97048fa10235b9ecf8dbd624fb84e53603f3bd9b62affa1673a67",
+        "bytes": 595179,
+        "bboxMM": [
+          -50.0,
+          -32.2641702347822,
+          -32.2641702347822,
+          50.0000001,
+          32.2641702347842,
+          32.2641702347842
+        ]
+      }
+    },
+    {
+      "id": "wide_annulus",
+      "name": "Wide axial annular inlet",
+      "kind": "annular",
+      "ri": 4,
+      "ro": 8.94427190999916,
+      "L": 40,
+      "bore": 22,
+      "length": 50,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -40,
+            0,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "innerDiameterMM": 8,
+          "outerDiameterMM": 17.88854381999832,
+          "lengthMM": 40
+        }
+      ],
+      "additions": [
+        "2 mm nominal housing walls; plain collars; abrupt annulus-to-bore transition",
+        "Central motive insert is separately mounted upstream; distributor and its support are not designed",
+        "Motive insert: 8 mm supply bore, 8 mm convergence; 3.5 mm bore through the central insert",
+        "Sharp edges, clearances, seals, threads and pressure rating are not finalized"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618831,
+        "portProbeChecks": 1,
+        "assemblyRoundtripVolumeError": 2.141972084326596e-14,
+        "records": {
+          "housing": {
+            "file": "parts/wide_annulus/housing.step",
+            "sha256": "7dbb61df00b9311e576778ecd5841395c69eae6341bb2b6a06c72a8f462610ac",
+            "volumeMM3": 13478.035217802199,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.5777271721204402e-14,
+            "bboxMM": [
+              -40.0,
+              -15.0,
+              -15.0,
+              50.0,
+              15.0,
+              15.0
+            ]
+          },
+          "nozzle": {
+            "file": "parts/wide_annulus/nozzle.step",
+            "sha256": "b80330f0d5285b8b2af7297cb70b7048ca3a67323f3a24e15842906d3a4466a6",
+            "volumeMM3": 2996.6866924429382,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 8.498002715419569e-15,
+            "bboxMM": [
+              -60.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/wide_annulus_fluid.step",
+            "sha256": "e1ff8eb10a08b43249381596fcb5d3be74e38745130d647eb126ed3800017d90",
+            "volumeMM3": 28174.19561647419,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 2.6987019648488497e-14,
+            "bboxMM": [
+              -60.0,
+              -11.0,
+              -11.0,
+              50.0,
+              11.0,
+              11.0
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/wide_annulus.step",
+        "sha256": "8171a8e9de122d3ad1b7a42872ec1ee4d6e5c00945a8f82a33cd6a0210036ca5",
+        "bytes": 56287,
+        "bboxMM": [
+          -60.0,
+          -15.0,
+          -15.0,
+          50.0,
+          15.0,
+          15.0
+        ]
+      }
+    },
+    {
+      "id": "powder_curtain",
+      "name": "Narrow coaxial powder curtain",
+      "kind": "annular",
+      "ri": 2.25,
+      "ro": 3.75,
+      "L": 12,
+      "bore": 14,
+      "length": 28,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -12,
+            0,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "innerDiameterMM": 4.5,
+          "outerDiameterMM": 7.5,
+          "lengthMM": 12
+        }
+      ],
+      "additions": [
+        "2 mm nominal housing walls; plain collars; abrupt annulus-to-bore transition",
+        "Central motive insert is separately mounted upstream; distributor and its support are not designed",
+        "Motive insert: 8 mm supply bore, 8 mm convergence; 3.5 mm bore through the central insert",
+        "Sharp edges, clearances, seals, threads and pressure rating are not finalized"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618718,
+        "portProbeChecks": 1,
+        "assemblyRoundtripVolumeError": 2.2785290876647605e-14,
+        "records": {
+          "housing": {
+            "file": "parts/powder_curtain/housing.step",
+            "sha256": "270f210b714a657ca47824177b43e86c4593664059f15388d578a7c8266e317e",
+            "volumeMM3": 4265.497425411673,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 3.070386029893471e-14,
+            "bboxMM": [
+              -12.0,
+              -11.0,
+              -11.0,
+              28.0,
+              11.0,
+              11.0
+            ]
+          },
+          "nozzle": {
+            "file": "parts/powder_curtain/nozzle.step",
+            "sha256": "992e38bd0e982c0141355c01050d07b89503e9fa22cf383c8e595af23f71dac8",
+            "volumeMM3": 1242.8925935764084,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 4.2624814607533436e-14,
+            "bboxMM": [
+              -32.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/powder_curtain_fluid.step",
+            "sha256": "98289e05aeed142096977472ca78b918d3c151d97dc24753a9ba29c11fe684b1",
+            "volumeMM3": 5505.248426334153,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 4.708343201468803e-14,
+            "bboxMM": [
+              -32.0,
+              -7.0,
+              -7.0,
+              28.0,
+              7.0,
+              7.0
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/powder_curtain.step",
+        "sha256": "f413fc04dd308663006e05e339b7ed9cf00b2cef460eaa2031e846cdd074ac90",
+        "bytes": 56040,
+        "bboxMM": [
+          -32.0,
+          -11.0,
+          -11.0,
+          28.0,
+          11.0,
+          11.0
+        ]
+      }
+    },
+    {
+      "id": "flash_cell",
+      "name": "Annular-sheet flash cell",
+      "kind": "annular",
+      "ri": 2.25,
+      "ro": 6,
+      "L": 2,
+      "bore": 18,
+      "length": 16,
+      "units": "mm",
+      "coordinates": "nozzle exit x=0; main flow +x",
+      "nozzleDiameterMM": 3.5,
+      "ports": [
+        {
+          "id": 1,
+          "pointMM": [
+            -2,
+            0,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "innerDiameterMM": 4.5,
+          "outerDiameterMM": 12,
+          "lengthMM": 2
+        }
+      ],
+      "additions": [
+        "2 mm nominal housing walls; plain collars; abrupt annulus-to-bore transition",
+        "Central motive insert is separately mounted upstream; distributor and its support are not designed",
+        "Motive insert: 8 mm supply bore, 8 mm convergence; 3.5 mm bore through the central insert",
+        "Sharp edges, clearances, seals, threads and pressure rating are not finalized"
+      ],
+      "scope": "Concept CAD realization for review, not a CFD-validated or fabrication-ready design",
+      "checks": {
+        "valid": true,
+        "connectedFluidSolids": 1,
+        "metalInterferenceMM3": 0.0,
+        "throatAreaMM2": 9.621127501618746,
+        "portProbeChecks": 1,
+        "assemblyRoundtripVolumeError": 1.5155716502517763e-14,
+        "records": {
+          "housing": {
+            "file": "parts/flash_cell/housing.step",
+            "sha256": "8b6940c85f8a64d67a3818890d921b6b7ffe90389bec6f5450ba846eee308314",
+            "volumeMM3": 2660.5799117401352,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 7.349576685080116e-15,
+            "bboxMM": [
+              -2.0,
+              -13.0,
+              -13.0,
+              16.0,
+              13.0,
+              13.0
+            ]
+          },
+          "nozzle": {
+            "file": "parts/flash_cell/nozzle.step",
+            "sha256": "098df4917ae21d4972d34696fb36859e1c21405fcf9ed3aaf6b98e3187501f1d",
+            "volumeMM3": 1180.0607405046162,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 4.2196840563285335e-14,
+            "bboxMM": [
+              -22.0,
+              -8.0,
+              -8.0,
+              0.0,
+              8.0,
+              8.0
+            ]
+          },
+          "fluid": {
+            "file": "fluid-domains/flash_cell_fluid.step",
+            "sha256": "bd05025b5fde6653c477e54473a91fe586617921b64a97d975605eb87e2407e1",
+            "volumeMM3": 5025.370148498374,
+            "solidCount": 1,
+            "valid": true,
+            "volumeRelativeRoundtripError": 3.981574062754852e-14,
+            "bboxMM": [
+              -22.0,
+              -9.0,
+              -9.0,
+              16.0,
+              9.0,
+              9.0
+            ]
+          }
+        }
+      },
+      "assembly": {
+        "file": "STEP/flash_cell.step",
+        "sha256": "86963ee177a59e9b83c71bb73be5e03e3666a3453ea48211c5f722139c008dc8",
+        "bytes": 51932,
+        "bboxMM": [
+          -22.0,
+          -13.0,
+          -13.0,
+          16.0,
+          13.0,
+          13.0
+        ]
+      }
+    }
+  ],
+  "systems": [
+    {
+      "id": "bank_2x20",
+      "name": "bank 2x20",
+      "instances": [
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -32.5,
+            0.0
+          ],
+          "unit": 1
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            32.5,
+            0.0
+          ],
+          "unit": 2
+        }
+      ],
+      "pitchMM": 65,
+      "separateOutlets": true,
+      "scope": "Module layout only. Feed splitter, motive headers, supports and merged outlet piping are not designed or included in the simulated performance.",
+      "checks": {
+        "valid": true,
+        "solidCount": 4,
+        "volumeRelativeRoundtripError": 1.2653714388996288e-08,
+        "maximumInterferenceMM3": 0
+      },
+      "assembly": {
+        "file": "STEP/bank_2x20.step",
+        "sha256": "15c2b7d48806dae3ab8ab8d89f4bd4f671fcf24e971d15d95008c8b19781f466",
+        "bytes": 977685,
+        "bboxMM": [
+          -50.0,
+          -51.46979716877453,
+          -18.969797168774527,
+          50.0,
+          51.469797168781525,
+          18.969797168781525
+        ]
+      }
+    },
+    {
+      "id": "bank_3x20",
+      "name": "bank 3x20",
+      "instances": [
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -65.0,
+            0.0
+          ],
+          "unit": 1
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            0.0,
+            0.0
+          ],
+          "unit": 2
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            65.0,
+            0.0
+          ],
+          "unit": 3
+        }
+      ],
+      "pitchMM": 65,
+      "separateOutlets": true,
+      "scope": "Module layout only. Feed splitter, motive headers, supports and merged outlet piping are not designed or included in the simulated performance.",
+      "checks": {
+        "valid": true,
+        "solidCount": 6,
+        "volumeRelativeRoundtripError": 1.265371316902095e-08,
+        "maximumInterferenceMM3": 0
+      },
+      "assembly": {
+        "file": "STEP/bank_3x20.step",
+        "sha256": "bf8f49172ac027d6c725d3c753f869ea0ae964ba03e84932bd9a068a6e2737b8",
+        "bytes": 978916,
+        "bboxMM": [
+          -50.0,
+          -83.96979716877452,
+          -18.969797168774527,
+          50.0,
+          83.96979716878153,
+          18.969797168781525
+        ]
+      }
+    },
+    {
+      "id": "bank_8x20",
+      "name": "bank 8x20",
+      "instances": [
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -97.5,
+            -32.5
+          ],
+          "unit": 1
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -32.5,
+            -32.5
+          ],
+          "unit": 2
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            32.5,
+            -32.5
+          ],
+          "unit": 3
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            97.5,
+            -32.5
+          ],
+          "unit": 4
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -97.5,
+            32.5
+          ],
+          "unit": 5
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -32.5,
+            32.5
+          ],
+          "unit": 6
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            32.5,
+            32.5
+          ],
+          "unit": 7
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            97.5,
+            32.5
+          ],
+          "unit": 8
+        }
+      ],
+      "pitchMM": 65,
+      "separateOutlets": true,
+      "scope": "Module layout only. Feed splitter, motive headers, supports and merged outlet piping are not designed or included in the simulated performance.",
+      "checks": {
+        "valid": true,
+        "solidCount": 16,
+        "volumeRelativeRoundtripError": 1.265371473756067e-08,
+        "maximumInterferenceMM3": 0
+      },
+      "assembly": {
+        "file": "STEP/bank_8x20.step",
+        "sha256": "11c0c12d3114c6a879b4503ba39c760adf57b9906404c954bc6fd7444f25eb02",
+        "bytes": 985165,
+        "bboxMM": [
+          -50.0,
+          -116.46979716877452,
+          -51.46979716877453,
+          50.0,
+          116.46979716878153,
+          51.469797168781525
+        ]
+      }
+    },
+    {
+      "id": "mixed_2x20_flash",
+      "name": "mixed 2x20 flash",
+      "instances": [
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            -65.0,
+            0.0
+          ],
+          "unit": 1
+        },
+        {
+          "id": "20deg_axis",
+          "positionMM": [
+            0,
+            0.0,
+            0.0
+          ],
+          "unit": 2
+        },
+        {
+          "id": "flash_cell",
+          "positionMM": [
+            0,
+            65.0,
+            0.0
+          ],
+          "unit": 3
+        }
+      ],
+      "pitchMM": 65,
+      "separateOutlets": true,
+      "scope": "Module layout only. Feed splitter, motive headers, supports and merged outlet piping are not designed or included in the simulated performance.",
+      "checks": {
+        "valid": true,
+        "solidCount": 6,
+        "volumeRelativeRoundtripError": 1.1545378159305468e-08,
+        "maximumInterferenceMM3": 0
+      },
+      "assembly": {
+        "file": "STEP/mixed_2x20_flash.step",
+        "sha256": "b911f4b8859661f652e872fc0e8738e3d3f1e241ea7974870e14d1bb20a3dff4",
+        "bytes": 1032647,
+        "bboxMM": [
+          -50.0,
+          -83.96979716877452,
+          -18.969797168774527,
+          50.0,
+          78.0,
+          18.969797168781525
+        ]
+      }
+    }
+  ],
+  "cadEngine": "CadQuery 2.6.1 / OpenCascade",
+  "source": "inlet-study35 declared geometry dimensions; additional metal/entry details listed per case"
+}

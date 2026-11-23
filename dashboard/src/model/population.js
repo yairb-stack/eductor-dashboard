@@ -15,6 +15,9 @@ const ExposurePopulation=(()=>{
    out.lossI=(i===j?2:1)-(out.bins.find(b=>b[0]===i)?.[1]||0);out.lossJ=i===j?out.lossI:1-(out.bins.find(b=>b[0]===j)?.[1]||0);births[i].set(j,out);return out;
   }
   function react(i,j,h){const k=C*getK(i,j),a=s.q[i],b=s.q[j];if(!(a>0&&b>0&&k>0))return;const out=birth(i,j),si=out.lossI,sj=out.lossJ;let event;
+   // Fixed-pivot birth may return most of a newly merged particle to its
+   // parent's bin. Integrate NET stoichiometry, otherwise giant/small pairs
+   // acquire an artificial collision-timescale stiffness and biased depletion.
    if(i===j){const z=.5*k*si*a*h;event=a/si*(z/(1+z));}
    else if(sj<1e-15)event=a/si*(-Math.expm1(-si*k*b*h));
    else {const aa=a/si,bb=b/sj,small=Math.min(aa,bb),large=Math.max(aa,bb),delta=large-small,kk=k*si*sj,z=kk*delta*h;event=delta<large*1e-10?small*(kk*large*h/(1+kk*large*h)):small*large*(-Math.expm1(-z))/(delta+small*(-Math.expm1(-z)));}
@@ -22,7 +25,13 @@ const ExposurePopulation=(()=>{
    for(const [bin,w] of out.bins)if(bin!==i&&bin!==j)s.q[bin]+=w*event;
    if(out.mass){s.overflowNumber+=event;s.overflowMass+=event*out.mass;}
   }
+  // Exact positive pair reactions with symmetric (Strang) splitting. A bound
+  // on bulk and materially populated bin loss rates resolves evolution without allowing negligible
+  // high-mass tails to force millions of explicit stability substeps.
   let left=dt;while(left>dt*1e-12){
+   // Retain sub-threshold bins in the mass ledger but do not let numerically
+   // negligible tails dominate pair work. Their total mass is bounded by
+   // bins × 1e-14 of initial mass; the threshold is below the mass-test budget.
    const active=[];for(let i=0;i<n;i++)if(s.q[i]*s.m[i]>1e-14*s.initialMass)active.push(i);
    let rate=0,N=sum(s.q),resolvedLoss=0;
    for(const i of active){let loss=0;for(const j of active){const pair=i<=j?birth(i,j):birth(j,i),encounter=C*getK(i,j)*s.q[j];rate+=s.q[i]*encounter;loss+=encounter*(i===j?.5*pair.lossI:i<j?pair.lossI:pair.lossJ);}if(s.q[i]*s.m[i]>1e-8*s.initialMass)resolvedLoss=Math.max(resolvedLoss,loss);}
