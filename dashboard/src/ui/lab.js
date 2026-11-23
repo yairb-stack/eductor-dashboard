@@ -25,7 +25,7 @@ function run(){
  }
  $('run').disabled=true;$('busy-note').textContent='Computing particle histories…';
  setTimeout(async()=>{if(version!==runVersion)return;let gasSolved=false;try{
-  if(p.wallModel==='cad'&&g.key.startsWith('nov')&&g.key!=='nov4'&&!EductorWalls.has(g.key)){const response=await fetch('/model-assets/walls/'+g.key+'.json');if(!response.ok)throw Error('Native CAD wall data could not be loaded. Select Reduced passages or retry.');EductorWalls.register(g.key,await response.json());if(version!==runVersion)return;}
+  if(p.wallModel==='cad'&&g.key.startsWith('nov')&&g.key!=='nov4'&&!EductorWalls.has(g.key)){const response=await fetch('../model-assets/walls/'+g.key+'.json');if(!response.ok)throw Error('Native CAD wall data could not be loaded. Select Reduced passages or retry.');EductorWalls.register(g.key,await response.json());if(version!==runVersion)return;}
 
   const f=Exposure.flow(g,p,Legacy);if(!f.ok){unavailable(g,p,f);return;}gasSolved=true;
   const r=await ExposureCompute.simulate(g,p,f,{cancelled:()=>version!==runVersion,onProgress:q=>{if(version===runVersion)$('busy-note').textContent=(q.phase==='statistics'?'Summarizing':'Computing')+' · '+q.completed.toLocaleString()+' / '+q.total.toLocaleString()+' histories…';}});if(version!==runVersion||r.cancelled)return;

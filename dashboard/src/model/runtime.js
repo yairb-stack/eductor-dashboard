@@ -8,7 +8,7 @@ const ExposureRuntime=(()=>{
  }
  function estimate(result){let bytes=0;for(const row of result.rows){const {samples,...rest}=row;bytes+=JSON.stringify(rest).length*4;const sizes=[samples[0],samples.at(-1),samples[Math.floor(samples.length/2)]].filter(Boolean).map(s=>JSON.stringify(s).length);bytes+=Math.max(0,...sizes)*samples.length*4;}return bytes;}
  function create(options={}){
-  const E=options.model||(typeof Exposure!=='undefined'?Exposure:null),W=options.WorkerClass??globalThis.Worker,build=options.buildHash||'unversioned',url=options.workerURL||'/model-assets/exposure-worker.js?v='+build;
+  const E=options.model||(typeof Exposure!=='undefined'?Exposure:null),W=options.WorkerClass??globalThis.Worker,build=options.buildHash||'unversioned',url=options.workerURL||'../model-assets/exposure-worker.js?v='+build;
   const cores=Math.max(1,Math.floor(options.hardwareConcurrency??globalThis.navigator?.hardwareConcurrency??2)),memory=options.deviceMemory??globalThis.navigator?.deviceMemory??8,maxWorkers=Math.max(1,Math.min(4,cores-1||1,memory<=4?2:4,options.maxWorkers??4));
   const cache=new LRU(options.cacheEntries??3,options.cacheBytes??(memory<=4?48:96)*1024*1024),prepared=new LRU(2),slots=[];let active=null,sequence=0,workersEnabled=!!W,closed=false;
   const counters={runs:0,cacheHits:0,workersStarted:0,cancelled:0,preparedHits:0};
