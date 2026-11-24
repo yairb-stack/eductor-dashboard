@@ -26,10 +26,10 @@ const ExposureRuntime=(()=>{
    slot.worker.onmessage=event=>{const m=event.data;if(m.ready){clearTimeout(slot.timer);if(m.build!==build){if(slot.job)fail(slot.job.run,Error('Model version changed; reload for parallel processing'),true);else remove(slot);return;}slot.ready=true;dispatch(slot);return;}
     const job=slot.job,run=job?.run;if(!run||active!==run||m.id!==run.id||m.group!==job.group)return;
     if(m.error){fail(run,Error(m.error));return;}
-    if(m.progress){run.counts[m.group]=m.progress.completed;run.onProgress({completed:run.counts.reduce((a,b)=>a+b,0),total:6*run.limit,phase:m.progress.phase,workers:run.workers});return;}
+    if(m.progress){run.counts[m.group]=m.progress.completed;run.onProgress({completed:run.counts.reduce((a,b)=>a+b,0),total:run.rows.length*run.limit,phase:m.progress.phase,workers:run.workers});return;}
     if(!m.result?.ok){fail(run,Error(m.result?.reason||'Particle model did not return a valid result'));return;}
     run.rows[m.group]=m.result.rows[0];run.meta=m.result;run.counts[m.group]=m.result.rows[0].n;slot.job=null;run.done++;
-    if(run.done===6){active=null;const {rows,meta}=run;run.resolve({ok:true,rows,Gref:meta.Gref,etaHalf:meta.etaHalf,etaQuarter:meta.etaQuarter,workers:run.workers});}
+    if(run.done===run.rows.length){active=null;const {rows,meta}=run;run.resolve({ok:true,rows,Gref:meta.Gref,etaHalf:meta.etaHalf,etaQuarter:meta.etaQuarter,workers:run.workers});}
     else assign(slot,run);
    };return slot;
   }
@@ -38,7 +38,7 @@ const ExposureRuntime=(()=>{
    let field=prepared.get(k);if(field)counters.preparedHits++;else{field=E.makeField(g,p,f);prepared.set(k,field);}
    const hit=cache.get(k);if(hit){counters.cacheHits++;return {...structuredClone(hit),field,pressure:f,settings:{...p},execution:{mode:'cache',workers:0,cacheHit:true,milliseconds:performance.now()-started}};}
    let result,fallbackReason=null;
-   if(workersEnabled){try{const count=Math.min(maxWorkers,p.wallModel==='cad'?2:4);while(slots.length>count)remove(slots.at(-1));result=await new Promise((resolve,reject)=>{const run={id,key:k,g,p,f,wallData:options.wallData?.(g.key),queue:[0,1,2,3,4,5],rows:Array(6),counts:Array(6).fill(0),limit:p.noise?(p.sampling==='precision'?(p.maxHistories??4096):p.n):(field.geo.branches?.length||1),done:0,workers:count,resolve,reject,onProgress};active=run;try{while(slots.length<count)spawn();for(const slot of slots)assign(slot,run);}catch(error){fail(run,error,true);}});}catch(error){if(!error.infrastructure)throw error;workersEnabled=false;fallbackReason=error.message;}}
+   if(workersEnabled){try{const count=Math.min(maxWorkers,p.wallModel==='cad'?2:4);while(slots.length>count)remove(slots.at(-1));result=await new Promise((resolve,reject)=>{const groups=[0,1],run={id,key:k,g,p,f,wallData:options.wallData?.(g.key),queue:groups.slice(),rows:Array(groups.length),counts:Array(groups.length).fill(0),limit:p.noise?(p.sampling==='precision'?(p.maxHistories??4096):p.n):(field.geo.branches?.length||1),done:0,workers:count,resolve,reject,onProgress};active=run;try{while(slots.length<count)spawn();for(const slot of slots)assign(slot,run);}catch(error){fail(run,error,true);}});}catch(error){if(!error.infrastructure)throw error;workersEnabled=false;fallbackReason=error.message;}}
    if(result?.cancelled||cancelled()||id!==sequence)return {ok:false,cancelled:true};
    if(!result){result=await E.simulateAsync(g,p,f,{field,cancelled:()=>cancelled()||id!==sequence,onProgress});if(result.cancelled||cancelled()||id!==sequence)return {ok:false,cancelled:true};}
    if(!result.ok)return result;const data={ok:true,rows:result.rows,Gref:result.Gref,etaHalf:result.etaHalf,etaQuarter:result.etaQuarter};const bytes=estimate(data);if(bytes<=cache.budget)cache.set(k,structuredClone(data),bytes);

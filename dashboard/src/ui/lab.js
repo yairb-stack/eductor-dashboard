@@ -77,7 +77,7 @@ function drawPaths(){
 }
 function drawHistories(){
  if(!current)return;const {r}=current,combined=matchMedia('(max-height:780px) and (min-width:651px)').matches;
- if($('lab-size-legend'))$('lab-size-legend').textContent='Particle charts: solid '+sizeLabel(r.rows[0].d)+' · dashed '+sizeLabel(r.rows[3].d);
+ if($('lab-size-legend')){const small=r.rows.find(row=>row.species===0),large=r.rows.find(row=>row.species===1);$('lab-size-legend').textContent='Particle charts: solid '+sizeLabel(small.d)+(large?' · dashed '+sizeLabel(large.d):'');}
  for(let species=0;species<2;species++){
   const target=$(species?'history-large':'history-small'),rows=combined?r.rows:r.rows.filter(row=>row.species===species),width=Math.max(150,target.clientWidth||300),height=Math.max(130,target.clientHeight||220);
   target.setAttribute('viewBox',`0 0 ${width} ${height}`);

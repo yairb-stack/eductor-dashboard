@@ -2035,7 +2035,7 @@ const Exposure=(()=>{
    const cumulative={},traceValues=(r,key)=>key==='probability'?Array.from(r.hazardSeries,v=>coagProbability(v,p.alpha??1)):Array.from(key==='screened'?r.screenedSeries:key==='hazard'?r.hazardSeries:r.componentSeries[key]);
    for(const key of cumulativeKeys){
     const c=Object.fromEntries(['mean','median','sd','se','p05','p25','p75','p95','ciLow','ciHigh'].map(k=>[k,[]])),histories=runs.map(r=>traceValues(r,key));
-    for(let b=0;b<241;b++){const q=p.modelVersion===2?weightedStats(histories.map(v=>v[b]),runs.map(r=>r.weight)):stats(histories.map(v=>v[b]));for(const k of ['mean','median','sd','se','p05','p25','p75','p95'])c[k].push(q[k]);c.ciLow.push(q.ci?.[0]??null);c.ciHigh.push(q.ci?.[1]??null);if(b%60===0)yield {completed:(species*3+o+1)*n,total:6*n,phase:'statistics'};}
+    for(let b=0;b<241;b++){const q=p.modelVersion===2?weightedStats(histories.map(v=>v[b]),runs.map(r=>r.weight)):stats(histories.map(v=>v[b]));for(const k of ['mean','median','sd','se','p05','p25','p75','p95'])c[k].push(q[k]);c.ciLow.push(q.ci?.[0]??null);c.ciHigh.push(q.ci?.[1]??null);if(b%60===0)yield {completed:(species*offsets.length+o+1)*n,total:2*offsets.length*n,phase:'statistics'};}
     c.traces=histories.slice(0,12);c.convergence=[...new Set([Math.max(1,Math.floor(n/4)),Math.max(1,Math.floor(n/2)),n])].map(count=>({count,...summary(runs.slice(0,count),r=>r[key])}));cumulative[key]=c;
    }
    const fates=Object.fromEntries(['wall','outlet','inlet','censored','numerical'].map(k=>{const subset=runs.filter(r=>r.fate===k),count=subset.length,fraction=p.modelVersion===2?subset.reduce((s,r)=>s+r.weight,0):count/n,neff=(p.modelVersion===2?1/runs.reduce((s,r)=>s+r.weight*r.weight,0):n)/(paired?2:1);return [k,{count,fraction,ci:wilson(fraction*neff,neff)}];}));
@@ -2080,10 +2080,10 @@ const ExposureRuntime=(()=>{
    slot.worker.onmessage=event=>{const m=event.data;if(m.ready){clearTimeout(slot.timer);if(m.build!==build){if(slot.job)fail(slot.job.run,Error('Model version changed; reload for parallel processing'),true);else remove(slot);return;}slot.ready=true;dispatch(slot);return;}
     const job=slot.job,run=job?.run;if(!run||active!==run||m.id!==run.id||m.group!==job.group)return;
     if(m.error){fail(run,Error(m.error));return;}
-    if(m.progress){run.counts[m.group]=m.progress.completed;run.onProgress({completed:run.counts.reduce((a,b)=>a+b,0),total:6*run.limit,phase:m.progress.phase,workers:run.workers});return;}
+    if(m.progress){run.counts[m.group]=m.progress.completed;run.onProgress({completed:run.counts.reduce((a,b)=>a+b,0),total:run.rows.length*run.limit,phase:m.progress.phase,workers:run.workers});return;}
     if(!m.result?.ok){fail(run,Error(m.result?.reason||'Particle model did not return a valid result'));return;}
     run.rows[m.group]=m.result.rows[0];run.meta=m.result;run.counts[m.group]=m.result.rows[0].n;slot.job=null;run.done++;
-    if(run.done===6){active=null;const {rows,meta}=run;run.resolve({ok:true,rows,Gref:meta.Gref,etaHalf:meta.etaHalf,etaQuarter:meta.etaQuarter,workers:run.workers});}
+    if(run.done===run.rows.length){active=null;const {rows,meta}=run;run.resolve({ok:true,rows,Gref:meta.Gref,etaHalf:meta.etaHalf,etaQuarter:meta.etaQuarter,workers:run.workers});}
     else assign(slot,run);
    };return slot;
   }
@@ -2092,7 +2092,7 @@ const ExposureRuntime=(()=>{
    let field=prepared.get(k);if(field)counters.preparedHits++;else{field=E.makeField(g,p,f);prepared.set(k,field);}
    const hit=cache.get(k);if(hit){counters.cacheHits++;return {...structuredClone(hit),field,pressure:f,settings:{...p},execution:{mode:'cache',workers:0,cacheHit:true,milliseconds:performance.now()-started}};}
    let result,fallbackReason=null;
-   if(workersEnabled){try{const count=Math.min(maxWorkers,p.wallModel==='cad'?2:4);while(slots.length>count)remove(slots.at(-1));result=await new Promise((resolve,reject)=>{const run={id,key:k,g,p,f,wallData:options.wallData?.(g.key),queue:[0,1,2,3,4,5],rows:Array(6),counts:Array(6).fill(0),limit:p.noise?(p.sampling==='precision'?(p.maxHistories??4096):p.n):(field.geo.branches?.length||1),done:0,workers:count,resolve,reject,onProgress};active=run;try{while(slots.length<count)spawn();for(const slot of slots)assign(slot,run);}catch(error){fail(run,error,true);}});}catch(error){if(!error.infrastructure)throw error;workersEnabled=false;fallbackReason=error.message;}}
+   if(workersEnabled){try{const count=Math.min(maxWorkers,p.wallModel==='cad'?2:4);while(slots.length>count)remove(slots.at(-1));result=await new Promise((resolve,reject)=>{const groups=[0,1],run={id,key:k,g,p,f,wallData:options.wallData?.(g.key),queue:groups.slice(),rows:Array(groups.length),counts:Array(groups.length).fill(0),limit:p.noise?(p.sampling==='precision'?(p.maxHistories??4096):p.n):(field.geo.branches?.length||1),done:0,workers:count,resolve,reject,onProgress};active=run;try{while(slots.length<count)spawn();for(const slot of slots)assign(slot,run);}catch(error){fail(run,error,true);}});}catch(error){if(!error.infrastructure)throw error;workersEnabled=false;fallbackReason=error.message;}}
    if(result?.cancelled||cancelled()||id!==sequence)return {ok:false,cancelled:true};
    if(!result){result=await E.simulateAsync(g,p,f,{field,cancelled:()=>cancelled()||id!==sequence,onProgress});if(result.cancelled||cancelled()||id!==sequence)return {ok:false,cancelled:true};}
    if(!result.ok)return result;const data={ok:true,rows:result.rows,Gref:result.Gref,etaHalf:result.etaHalf,etaQuarter:result.etaQuarter};const bytes=estimate(data);if(bytes<=cache.budget)cache.set(k,structuredClone(data),bytes);
